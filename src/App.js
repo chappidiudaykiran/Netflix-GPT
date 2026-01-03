@@ -1,7 +1,8 @@
+import Body from "./components/Body";
 function App() {
   return (
-    <div className="text-red-600">
-       welcome to create react app
+    <div>
+       <Body/>
     </div>
   );
 }
