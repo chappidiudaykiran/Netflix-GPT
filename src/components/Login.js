@@ -8,9 +8,10 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { USER_AVATAR } from "../utils/constants";
+import { Netflix_Bg } from "../utils/constants";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = React.useState(true);
@@ -18,8 +19,7 @@ const Login = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
-  const navigate = useNavigate();
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
 
   const handlebutton = () => {
     // Logic for handling sign in or sign up
@@ -34,21 +34,19 @@ const Login = () => {
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
-        password.current.value
+        password.current.value,
       )
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/186321916?v=4",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               // Profile updated!
               const { uid, email, displayName, photoURL } = auth.currentUser;
-              dispatch(addUser({ uid, email, displayName, photoURL })
-            );
-              navigate("/Browse");
+              dispatch(addUser({ uid, email, displayName, photoURL }));
             })
             .catch((error) => {
               // An error occurred
@@ -64,12 +62,23 @@ const Login = () => {
       signInWithEmailAndPassword(
         auth,
         email.current.value,
-        password.current.value
+        password.current.value,
       )
         .then((userCredential) => {
-          // Signed in
-          navigate("/Browse");
-          // ...
+          const user = userCredential.user;
+          if (user?.photoURL !== USER_AVATAR) {
+            updateProfile(user, { photoURL: USER_AVATAR })
+              .then(() => {
+                const { uid, email, displayName, photoURL } = auth.currentUser;
+                dispatch(addUser({ uid, email, displayName, photoURL }));
+              })
+              .catch((error) => {
+                setErrorMessage(error.code + "-" + error.message);
+              });
+          } else {
+            const { uid, email, displayName, photoURL } = user;
+            dispatch(addUser({ uid, email, displayName, photoURL }));
+          }
         })
         .catch((error) => {
           const errorMessage = error.message;
@@ -87,7 +96,7 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/d13e2d55-5cdd-48c0-a55b-4b292d0b9889/web/IN-en-20251229-TRIFECTA-perspective_d7edcd70-4cfd-441c-858c-c5e400ed6c2b_large.jpg"
+          src={Netflix_Bg}
           alt="Netflix Bg"
         />
       </div>

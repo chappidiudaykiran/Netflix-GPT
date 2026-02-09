@@ -1,37 +1,67 @@
-import React, { use } from "react";
-import { signOut } from "firebase/auth";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { addUser, removeUser } from "../utils/userSlice";
+import { LOGO, USER_AVATAR } from "../utils/constants";
 
 const Header = () => {
+  const dispatch =useDispatch();
   const navigate = useNavigate();
   const user=useSelector((state)=>state.user.user);
-  console.log("User from Redux:", user);
 
   const handlesignout = () => {
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
-        navigate("/");
       })
       .catch((error) => {
         // An error happened.
         navigate("/error");
       });
   };
+
+ useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid,
+            email,
+            displayName,
+            photoURL: photoURL || USER_AVATAR,
+          })
+        );
+        navigate("/Browse");
+      } 
+      
+      else {
+        // User is signed out
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+
+    //unsubcribe when the component unmounts
+    return () => unsubscribe(); 
+
+  }, [dispatch, navigate]);
+
   return (
     <div className="absolute px-8 py-4 bg-gradient-to-b from-black to-transparent w-full z-10  flex justify-between items-center">
       <img
         className="w-44"
-        src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+        src={LOGO}
         alt="Netflix Logo"
       />
      {user && (<div className="flex items-center gap-4">
         <img
           alt="usericon"
           className="w-8 h-8 rounded cursor-pointer filter brightness-75 saturate-150 hue-rotate-330"
-          src={user?.photoURL}
+          src={user?.photoURL || USER_AVATAR}
         />
         <button
           onClick={handlesignout}
