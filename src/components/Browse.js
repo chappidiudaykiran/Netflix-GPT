@@ -1,23 +1,18 @@
-import React, { use } from 'react'
 import Header from './Header'
-import { useEffect } from 'react';
-import { API_Options } from '../utils/constants';
+import useNowPlayingMovies from '../hooks/useNowPlayingMovies'  
+import { use } from 'react'
+import Maincontainer from './Maincontainer';
+import Secondarycontainer from './Secondarycontainer';
+
 const Browse = () => {
-
- const getNowPlayingMovies=async()=>{
-  const data=await fetch("https://api.themoviedb.org/3/movie/now_playing?page=1",API_Options);
-  const jsonData=await data.json();
-  console.log(jsonData.results);
- };
-
- useEffect(()=>{
-  getNowPlayingMovies();
-  },[]);  
-
+  
+ useNowPlayingMovies(); 
+ // Custom hook to fetch now playing movies and update the store 
   return (
     <div>
       <Header/>
-      <h1>Browse Page</h1>
+      <Maincontainer/>
+      <Secondarycontainer/>
     </div>
   )
 }
