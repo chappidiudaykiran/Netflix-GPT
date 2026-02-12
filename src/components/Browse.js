@@ -9,7 +9,7 @@ const Browse = () => {
  useNowPlayingMovies(); 
  // Custom hook to fetch now playing movies and update the store 
   return (
-    <div>
+    <div className="bg-black overflow-hidden">
       <Header/>
       <Maincontainer/>
       <Secondarycontainer/>

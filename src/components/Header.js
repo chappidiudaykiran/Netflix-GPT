@@ -51,7 +51,7 @@ const Header = () => {
   }, [dispatch, navigate]);
 
   return (
-    <div className="absolute px-8 py-4 bg-gradient-to-b from-black to-transparent w-full z-10  flex justify-between items-center">
+    <div className="absolute px-8 py-4 bg-gradient-to-b from-black to-transparent w-full z-10 flex justify-between items-center">
       <img
         className="w-44"
         src={LOGO}
@@ -65,9 +65,9 @@ const Header = () => {
         />
         <button
           onClick={handlesignout}
-          className="text-white bg-red-600 px-4 py-2 rounded"
+          className="text-white bg-red-600 px-4 py-2 rounded hover:bg-red-700"
         >
-          signout
+          Sign Out
         </button>
       </div>)}
     </div>

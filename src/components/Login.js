@@ -92,10 +92,11 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="relative h-screen overflow-hidden">
       <Header />
-      <div className="absolute">
+      <div className="absolute inset-0">
         <img
+          className="w-full h-full object-cover"
           src={Netflix_Bg}
           alt="Netflix Bg"
         />

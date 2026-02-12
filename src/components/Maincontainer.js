@@ -12,8 +12,7 @@ const Maincontainer = () => {
   console.log("Main Movie:", mainmovie); // Debugging log to check the main movie data
   const {original_title,overview,id}=mainmovie; // Destructuring the main movie data to get the title and overview
   return (
-    <div>
-      Maincontainer
+    <div className="relative">
       <VideoTitle title={original_title} overview={overview} />
       <VideoBackground id={id} />
     </div>
