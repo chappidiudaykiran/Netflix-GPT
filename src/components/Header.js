@@ -5,11 +5,17 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO, USER_AVATAR } from "../utils/constants";
+import { toggleGptSerachView } from "../utils/gptSlice";
 
 const Header = () => {
   const dispatch =useDispatch();
   const navigate = useNavigate();
   const user=useSelector((state)=>state.user.user);
+
+  const handlegptsearchclick=()=>{
+    dispatch(toggleGptSerachView());
+  }
+
 
   const handlesignout = () => {
     signOut(auth)
@@ -58,6 +64,9 @@ const Header = () => {
         alt="Netflix Logo"
       />
      {user && (<div className="flex items-center gap-4">
+        <button className="text-white bg-red-600 mx-4 my-2 px-4 py-2 rounded-lg hover:bg-red-700 transition-all duration-200 font-semibold" onClick={handlegptsearchclick}>
+         GPT Search
+        </button>
         <img
           alt="usericon"
           className="w-8 h-8 rounded cursor-pointer filter brightness-75 saturate-150 hue-rotate-330"
