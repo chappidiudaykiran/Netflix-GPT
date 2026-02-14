@@ -6,16 +6,23 @@ import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO, USER_AVATAR } from "../utils/constants";
 import { toggleGptSerachView } from "../utils/gptSlice";
-
+import { changeLanguage } from "../utils/configSlice";
+import { Supported_Languages } from "../utils/constants";
+import { selectUser } from "../utils/userSlice";
+import { selectShowGptSearch } from "../utils/gptSlice";
 const Header = () => {
   const dispatch =useDispatch();
   const navigate = useNavigate();
   const user=useSelector((state)=>state.user.user);
+  const showgptsearch=useSelector((state)=>state.gpt.showgptsearch);
+
+  const handleLanguageChange=(e)=>{
+    dispatch(changeLanguage(e.target.value));
+  }
 
   const handlegptsearchclick=()=>{
     dispatch(toggleGptSerachView());
   }
-
 
   const handlesignout = () => {
     signOut(auth)
@@ -63,9 +70,15 @@ const Header = () => {
         src={LOGO}
         alt="Netflix Logo"
       />
-     {user && (<div className="flex items-center gap-4">
+     {user && (
+      <div className="flex items-center gap-4">
+        {showgptsearch && <select className="bg-black/50 text-white px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-600" defaultValue="en" onChange={handleLanguageChange}>
+          {Supported_Languages.map((lang) => (
+            <option key={lang.code} value={lang.code}>{lang.name}</option>
+          ))}
+        </select>}
         <button className="text-white bg-red-600 mx-4 my-2 px-4 py-2 rounded-lg hover:bg-red-700 transition-all duration-200 font-semibold" onClick={handlegptsearchclick}>
-         GPT Search
+         {showgptsearch?"HomePage":"GPT Search"}
         </button>
         <img
           alt="usericon"

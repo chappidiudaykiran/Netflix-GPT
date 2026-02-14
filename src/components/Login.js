@@ -23,8 +23,6 @@ const Login = () => {
 
   const handlebutton = () => {
     // Logic for handling sign in or sign up
-    console.log(email.current.value);
-    console.log(password.current.value);
     const message = checkValidate(email.current.value, password.current.value);
     setErrorMessage(message);
 

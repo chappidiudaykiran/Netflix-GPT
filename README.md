@@ -30,7 +30,9 @@
   - Embedded the YouTube video and make it autoplay and mute
   - Tailwind classes to make maincontainer look awesome
   - Build Secondary Component
-  - GPT Search Feauture
+  - GPT Search Page
+  - GPT Search Bar
+  - (Bonus) Multi Language Feauture in Our App
 
 # Feautures
   - Login/signup

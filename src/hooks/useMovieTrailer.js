@@ -11,11 +11,9 @@ const useMovieTrailer = (movie) => {
       API_Options,
     );
     const json = await data.json();
-    console.log("Video Data:", json); // Debugging log to check the video data structure
 
     // Add null check for json.results before calling find
     if (!json.results || !Array.isArray(json.results)) {
-      console.log("No results found in video data.");
       return;
     }
 
@@ -23,12 +21,6 @@ const useMovieTrailer = (movie) => {
       (video) => video.type === "Trailer" && video.site === "YouTube",
     );
     const trailer = filterdataa ? filterdataa : json.results[0]; // Check if a trailer was found, otherwise set to first video
-    if (trailer) {
-      console.log("Trailer Key:", trailer.key); // Debugging log to check the trailer key
-      // You can use the trailer key to construct the YouTube URL or embed it in an iframe
-    } else {
-      console.log("No trailer found for this movie.");
-    }
     dispatch(addTrailerVideo(trailer));
   }; // Dispatching the trailer video to the Redux store
   useEffect(() => {

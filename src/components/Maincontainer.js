@@ -9,7 +9,7 @@ const Maincontainer = () => {
   if (movies.length === 0) return null;
   
   const mainmovie=movies[0]; // Assuming the first movie in the list is the main movie to be displayed
-  console.log("Main Movie:", mainmovie); // Debugging log to check the main movie data
+  // Debugging log to check the main movie data
   const {original_title,overview,id}=mainmovie; // Destructuring the main movie data to get the title and overview
   return (
     <div className="relative">

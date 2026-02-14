@@ -1,7 +1,7 @@
 import Moviecard from './Moviecard'
 
 const Movielist = ({ title, movies }) => {
-    console.log("Movies in Movielist:", movies); // Debugging log to check the movies data passed to Movielist
+     // Debugging log to check the movies data passed to Movielist
     if (!movies || movies.length === 0) {
         return null;
     }
