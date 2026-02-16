@@ -32,3 +32,16 @@ body {
 .overflow-x-auto::-webkit-scrollbar {
   display: none;
 }
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+}

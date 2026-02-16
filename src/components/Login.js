@@ -101,12 +101,12 @@ const Login = () => {
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute w-3/12 bg-black/80 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-6 p-12 rounded-lg text-white"
+        className="absolute w-11/12 sm:w-10/12 md:w-8/12 lg:w-3/12 bg-black/80 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-6 p-6 sm:p-8 md:p-10 lg:p-12 rounded-lg text-white"
       >
-        <h1 className="font-bold text-3xl mb-4">
+        <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl mb-4">
           {isSignIn ? "Sign In" : "Sign Up"}
         </h1>
-        {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
+        {errorMessage && <p className="text-red-500 text-xs sm:text-sm">{errorMessage}</p>}
         {!isSignIn && (
           <input
             ref={name}
@@ -135,7 +135,7 @@ const Login = () => {
           {isSignIn ? "Sign In" : "Sign Up"}
         </button>
         <p
-          className="text-gray-400 text-sm mt-4"
+          className="text-gray-400 text-xs sm:text-sm mt-4"
           onClick={toogleSignIn}
           style={{ cursor: "pointer" }}
         >

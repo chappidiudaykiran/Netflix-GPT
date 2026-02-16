@@ -59,18 +59,18 @@ const GptSearchBar = () => {
   const langKey=useSelector((state)=>state.config.lang);
   
   return (
-    <div className='pt-[7%] px-4'>
-        <form className='w-full flex items-center justify-center my-4' onSubmit={handleGptSearchClick}>
+    <div className='pt-[10%] sm:pt-[8%] lg:pt-[7%] px-4'>
+        <form className='w-full flex flex-col sm:flex-row items-center justify-center my-3 sm:my-4 gap-2 sm:gap-0' onSubmit={handleGptSearchClick}>
             <input 
               ref={searchText} 
-              className='w-full md:w-3/4 lg:w-2/3 px-4 py-3 text-base rounded-l-lg bg-white text-red-600 placeholder-red-400 focus:outline-none focus:ring-2 focus:ring-red-600' 
+              className='w-full sm:w-3/4 lg:w-2/3 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base rounded-lg sm:rounded-l-lg bg-white text-red-600 placeholder-red-400 focus:outline-none focus:ring-2 focus:ring-red-600' 
               placeholder={lang[langKey].gptsearchplaceholder}
               disabled={loading}
             />
             <button 
               type="submit"
               disabled={loading}
-              className='px-6 py-3 bg-red-600 text-white rounded-r-lg hover:bg-red-700 transition-colors duration-200 font-semibold whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed'
+              className='w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-red-600 text-white rounded-lg sm:rounded-r-lg text-sm sm:text-base hover:bg-red-700 transition-colors duration-200 font-semibold whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed'
             >
               {loading ? "Searching..." : lang[langKey].search}
             </button>
