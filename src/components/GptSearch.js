@@ -5,13 +5,14 @@ import { Netflix_Bg } from '../utils/constants'
 
 const GptSearch = () => {
   return (
-    <div>
-      <div className='absolute -z-10 inset-0'>
-        <img src={Netflix_Bg} alt="Netflix Background" className="w-full h-full object-cover" />
-      </div>
+    <div 
+      className='min-h-screen bg-cover bg-center bg-no-repeat'
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("${Netflix_Bg}")`
+      }}
+    >
       <GptSearchBar/>
       <GptMovieSuggestions/>
-
     </div>
   )
 }

@@ -4,7 +4,7 @@ export const Netflix_Bg="https://assets.nflxext.com/ffe/siteui/vlv3/d13e2d55-5cd
 export const API_Options={
   method: "GET",
   headers: {
-    Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmN2M1ZDE4OTUzMjk1ZjFhYmE1NzhkMWZiNzBmYmQzZiIsIm5iZiI6MTc3MDYyNzQ0Ni4zMzUsInN1YiI6IjY5ODlhMTc2NGNmNTRlYjY3YThlNzJhNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mZvCx5Bgb7_gI0LDLvvA1yWms25tv7ZAcoLobMQBvPg",
+    Authorization: "Bearer "+process.env.REACT_APP_OPENAI_API_KEY,
     accept: "application/json",
   },
 };
