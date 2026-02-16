@@ -33,6 +33,11 @@
   - GPT Search Page
   - GPT Search Bar
   - (Bonus) Multi Language Feauture in Our App
+  - Get open AI Api key
+  - fetched gtpmoviesSuggestions from TMDB
+  - Created gptSlice added data
+  - Reused movie list component to make movie suggestion container
+  - Memoization
 
 # Feautures
   - Login/signup
