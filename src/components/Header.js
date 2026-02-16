@@ -8,8 +8,6 @@ import { LOGO, USER_AVATAR } from "../utils/constants";
 import { toggleGptSerachView } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
 import { Supported_Languages } from "../utils/constants";
-import { selectUser } from "../utils/userSlice";
-import { selectShowGptSearch } from "../utils/gptSlice";
 const Header = () => {
   const dispatch =useDispatch();
   const navigate = useNavigate();

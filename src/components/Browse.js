@@ -3,7 +3,6 @@ import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 import usePopularMovies from '../hooks/usePopularMovies'
 import useTopRated from '../hooks/useTopRated'
 import useUpcoming from '../hooks/useUpcoming'
-import { use } from 'react'
 import Maincontainer from './Maincontainer';
 import Secondarycontainer from './Secondarycontainer';
 import GptSearch from './GptSearch';

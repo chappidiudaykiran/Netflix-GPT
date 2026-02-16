@@ -25,6 +25,7 @@ const useMovieTrailer = (movie) => {
   }; // Dispatching the trailer video to the Redux store
   useEffect(() => {
     getMovieVideos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movie.id]);
 };
 export default useMovieTrailer;
