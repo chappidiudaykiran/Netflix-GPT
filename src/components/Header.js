@@ -76,7 +76,7 @@ const Header = () => {
           ))}
         </select>}
         <button className="text-white bg-red-600 mx-2 sm:mx-3 lg:mx-4 my-1 sm:my-2 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 text-xs sm:text-sm lg:text-base rounded-lg hover:bg-red-700 transition-all duration-200 font-semibold" onClick={handlegptsearchclick}>
-         {showgptsearch?"HomePage":"GPT Search"}
+         {showgptsearch?"HomePage":"GPT-Search"}
         </button>
         <img
           alt="usericon"
