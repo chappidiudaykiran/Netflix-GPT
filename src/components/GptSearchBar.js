@@ -50,7 +50,17 @@ const GptSearchBar = () => {
     
     } catch (error) {
       console.error("Groq API Error:", error);
-      alert("⚠️ Groq API Error: " + error.message);
+      const isInvalidApiKey =
+        error?.status === 401 ||
+        error?.code === "invalid_api_key" ||
+        error?.error?.code === "invalid_api_key" ||
+        error?.message?.toLowerCase().includes("invalid api key");
+
+      if (isInvalidApiKey) {
+        alert("⚠️ Invalid Groq API key. Update REACT_APP_GROQ_API_KEY in .env, then restart npm start.");
+      } else {
+        alert("⚠️ Groq API Error: " + error.message);
+      }
     } finally {
       setLoading(false);
     }
