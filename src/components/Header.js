@@ -69,7 +69,7 @@ const Header = () => {
           src={LOGO}
           alt="MovieGPT logo"
         />
-        <h1 className="text-white text-lg sm:text-xl lg:text-2xl font-bold tracking-wide">MovieGPT</h1>
+        <h1 className="text-white text-lg sm:text-xl lg:text-2xl font-bold tracking-wide">Movie GPT</h1>
       </div>
      {user && (
       <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
@@ -79,7 +79,7 @@ const Header = () => {
           ))}
         </select>}
         <button className="text-white bg-cyan-600 mx-2 sm:mx-3 lg:mx-4 my-1 sm:my-2 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 text-xs sm:text-sm lg:text-base rounded-lg hover:bg-cyan-700 transition-all duration-200 font-semibold" onClick={handlegptsearchclick}>
-         {showgptsearch?"Home":"MovieGPT Search"}
+         {showgptsearch?"Home":"Movie GPT Search"}
         </button>
         <img
           alt="usericon"
