@@ -62,21 +62,24 @@ const Header = () => {
   }, [dispatch, navigate]);
 
   return (
-    <div className="absolute px-4 sm:px-6 lg:px-8 py-3 sm:py-4 bg-gradient-to-b from-black to-transparent w-full z-10 flex justify-between items-center">
-      <img
-        className="w-24 sm:w-32 lg:w-44"
-        src={LOGO}
-        alt="Netflix Logo"
-      />
+    <div className="absolute px-4 sm:px-6 lg:px-8 py-3 sm:py-4 bg-gradient-to-b from-slate-950 via-slate-900/80 to-transparent w-full z-10 flex justify-between items-center">
+      <div className="flex items-center gap-2 sm:gap-3">
+        <img
+          className="h-7 w-7 sm:h-8 sm:w-8 rounded-md object-cover"
+          src={LOGO}
+          alt="MovieGPT logo"
+        />
+        <h1 className="text-white text-lg sm:text-xl lg:text-2xl font-bold tracking-wide">MovieGPT</h1>
+      </div>
      {user && (
       <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
-        {showgptsearch && <select className="hidden md:block bg-black/50 text-white px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-600" defaultValue="en" onChange={handleLanguageChange}>
+        {showgptsearch && <select className="hidden md:block bg-slate-800/80 text-white px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-cyan-500" defaultValue="en" onChange={handleLanguageChange}>
           {Supported_Languages.map((lang) => (
             <option key={lang.code} value={lang.code}>{lang.name}</option>
           ))}
         </select>}
-        <button className="text-white bg-red-600 mx-2 sm:mx-3 lg:mx-4 my-1 sm:my-2 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 text-xs sm:text-sm lg:text-base rounded-lg hover:bg-red-700 transition-all duration-200 font-semibold" onClick={handlegptsearchclick}>
-         {showgptsearch?"HomePage":"GPT-Search"}
+        <button className="text-white bg-cyan-600 mx-2 sm:mx-3 lg:mx-4 my-1 sm:my-2 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 text-xs sm:text-sm lg:text-base rounded-lg hover:bg-cyan-700 transition-all duration-200 font-semibold" onClick={handlegptsearchclick}>
+         {showgptsearch?"Home":"MovieGPT Search"}
         </button>
         <img
           alt="usericon"
@@ -85,9 +88,9 @@ const Header = () => {
         />
         <button
           onClick={handlesignout}
-          className="text-white bg-red-600 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 rounded text-xs sm:text-sm lg:text-base hover:bg-red-700"
+          className="text-white bg-cyan-600 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 rounded text-xs sm:text-sm lg:text-base hover:bg-cyan-700"
         >
-          Sign Out
+          Logout
         </button>
       </div>)}
     </div>

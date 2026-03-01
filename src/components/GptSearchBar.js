@@ -13,9 +13,18 @@ const GptSearchBar = () => {
   const [loading, setLoading] = useState(false);
   //Search movie in TMDB
   const searchMovieInTMDB=async(movieName)=>{
-      const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(movieName)}&include_adult=false&language=en-US&page=1`,API_Options);
+      try {
+        const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(movieName)}&include_adult=false&language=en-US&page=1`,API_Options);
+        if(!response.ok){
+          console.error("Failed TMDB movie search", response.status, response.statusText);
+          return [];
+        }
         const data = await response.json();
-        return data.results;
+        return data?.results || [];
+      } catch (error) {
+        console.error("Network error during TMDB movie search", error);
+        return [];
+      }
   };
   
   const handleGptSearchClick = async (e) => {
@@ -73,14 +82,14 @@ const GptSearchBar = () => {
         <form className='w-full flex flex-col sm:flex-row items-center justify-center my-3 sm:my-4 gap-2 sm:gap-0' onSubmit={handleGptSearchClick}>
             <input 
               ref={searchText} 
-              className='w-full sm:w-3/4 lg:w-2/3 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base rounded-lg sm:rounded-l-lg bg-white text-red-600 placeholder-red-400 focus:outline-none focus:ring-2 focus:ring-red-600' 
+              className='w-full sm:w-3/4 lg:w-2/3 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base rounded-lg sm:rounded-l-lg bg-slate-100 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500' 
               placeholder={lang[langKey].gptsearchplaceholder}
               disabled={loading}
             />
             <button 
               type="submit"
               disabled={loading}
-              className='w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-red-600 text-white rounded-lg sm:rounded-r-lg text-sm sm:text-base hover:bg-red-700 transition-colors duration-200 font-semibold whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed'
+              className='w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-cyan-600 text-white rounded-lg sm:rounded-r-lg text-sm sm:text-base hover:bg-cyan-700 transition-colors duration-200 font-semibold whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed'
             >
               {loading ? "Searching..." : lang[langKey].search}
             </button>

@@ -1,10 +1,10 @@
-export const LOGO="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg";
-export const USER_AVATAR="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg";
-export const Netflix_Bg="https://assets.nflxext.com/ffe/siteui/vlv3/d13e2d55-5cdd-48c0-a55b-4b292d0b9889/web/IN-en-20251229-TRIFECTA-perspective_d7edcd70-4cfd-441c-858c-c5e400ed6c2b_large.jpg";
+export const LOGO="https://cdn-icons-png.flaticon.com/512/2503/2503508.png";
+export const USER_AVATAR="https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+export const Netflix_Bg="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1920&q=80";
 export const API_Options={
   method: "GET",
   headers: {
-    Authorization: "Bearer "+process.env.REACT_APP_OPENAI_API_KEY,
+    Authorization: "Bearer " + (process.env.REACT_APP_TMDB_API_KEY || process.env.REACT_APP_OPENAI_API_KEY),
     accept: "application/json",
   },
 };

@@ -16,7 +16,7 @@ const Browse = () => {
  useUpcoming();
  // Custom hook to fetch now playing movies, popular movies, and top-rated movies and update the store 
   return (
-    <div className="bg-black overflow-x-hidden">
+    <div className="bg-slate-950 overflow-x-hidden min-h-screen">
       <Header/>
       {
         showgptsearch ? (

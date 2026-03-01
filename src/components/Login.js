@@ -11,7 +11,6 @@ import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { USER_AVATAR } from "../utils/constants";
-import { Netflix_Bg } from "../utils/constants";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = React.useState(true);
@@ -92,44 +91,38 @@ const Login = () => {
   return (
     <div className="relative h-screen overflow-hidden">
       <Header />
-      <div className="absolute inset-0">
-        <img
-          className="w-full h-full object-cover"
-          src={Netflix_Bg}
-          alt="Netflix Bg"
-        />
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950" />
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute w-11/12 sm:w-10/12 md:w-8/12 lg:w-3/12 bg-black/80 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-6 p-6 sm:p-8 md:p-10 lg:p-12 rounded-lg text-white"
+        className="absolute w-11/12 sm:w-10/12 md:w-8/12 lg:w-3/12 bg-slate-900/85 border border-slate-700 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-6 p-6 sm:p-8 md:p-10 lg:p-12 rounded-lg text-white"
       >
         <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl mb-4">
           {isSignIn ? "Sign In" : "Sign Up"}
         </h1>
-        {errorMessage && <p className="text-red-500 text-xs sm:text-sm">{errorMessage}</p>}
+        {errorMessage && <p className="text-cyan-300 text-xs sm:text-sm">{errorMessage}</p>}
         {!isSignIn && (
           <input
             ref={name}
             type="text"
             placeholder="Full Name"
-            className="py-3 px-4 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-white"
+            className="py-3 px-4 rounded bg-slate-800 border border-slate-600 focus:outline-none focus:border-cyan-400"
           />
         )}
         <input
           ref={email}
           type="email"
           placeholder="Email Address"
-          className="py-3 px-4 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-white"
+          className="py-3 px-4 rounded bg-slate-800 border border-slate-600 focus:outline-none focus:border-cyan-400"
         />
 
         <input
           ref={password}
           type="password"
           placeholder="Password"
-          className="py-3 px-4 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-white"
+          className="py-3 px-4 rounded bg-slate-800 border border-slate-600 focus:outline-none focus:border-cyan-400"
         />
         <button
-          className="bg-red-600 hover:bg-red-700 p-3 rounded font-semibold mt-6"
+          className="bg-cyan-600 hover:bg-cyan-700 p-3 rounded font-semibold mt-6"
           onClick={handlebutton}
         >
           {isSignIn ? "Sign In" : "Sign Up"}
@@ -139,7 +132,7 @@ const Login = () => {
           onClick={toogleSignIn}
           style={{ cursor: "pointer" }}
         >
-          {isSignIn ? "New to Netflix? " : "Already have an account? "}
+          {isSignIn ? "New to MovieGPT? " : "Already have an account? "}
           <span className="text-white hover:underline cursor-pointer">
             {isSignIn ? "Sign up now" : "Sign in now"}
           </span>
